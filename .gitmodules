@@ -1,0 +1,3 @@
+[submodule "linux-entra-sso"]
+	path = linux-entra-sso
+	url = https://github.com/siemens/linux-entra-sso
