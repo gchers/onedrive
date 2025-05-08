@@ -82,7 +82,10 @@ class ApplicationConfig {
 		
 	// Azure Active Directory & Graph Explorer Endpoints
 	// - Global & Default
-	immutable string globalAuthEndpoint = "https://login.microsoftonline.com";
+	//
+        // Patch by @gchers to support SSO authentication.
+        //
+	immutable string globalAuthEndpoint = "http://localhost:8539";
 	immutable string globalGraphEndpoint = "https://graph.microsoft.com";
 	// - US Government L4
 	immutable string usl4AuthEndpoint = "https://login.microsoftonline.us";

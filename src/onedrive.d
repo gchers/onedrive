@@ -398,6 +398,11 @@ class OneDriveApi {
 
 	// Authenticate this client against Microsoft OneDrive API
 	bool authorise() {
+		//
+		// Patch by @gchers to support SSO authentication.
+		//
+		acquireToken([]);
+		return true;
 	
 		char[] response;
 		// What URL should be presented to the user to access
