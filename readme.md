@@ -5,6 +5,42 @@
 [![Build Docker Images](https://github.com/abraunegg/onedrive/actions/workflows/docker.yaml/badge.svg)](https://github.com/abraunegg/onedrive/actions/workflows/docker.yaml)
 [![Docker Pulls](https://img.shields.io/docker/pulls/driveone/onedrive)](https://hub.docker.com/r/driveone/onedrive)
 
+### OneDrive Client for Linux with SSO support
+This is a fork of [OneDrive Client](https://github.com/abraunegg/onedrive) which taps into [linux-entra-sso](https://github.com/siemens/linux-entra-sso) to provide SSO authentication.
+The code was modified with the least amount of changes possible; this is to make it easy to keep it up with the main OneDrive Client project. But this is not meant to be a long-term replacement.
+
+#### Requirements
+
+Install the Python dependencies:
+
+```
+pip fastapi uvicorn
+```
+
+For OneDrive requirements:
+
+```
+git clone --recurse-submodules https://github.com/gchers/onedrive
+cd onedrive
+# Install onedrive requirements. For example, ubuntu:
+sudo apt install pkg-config libcurl4-openssl-dev libsqlite3-dev
+curl -fsS https://dlang.org/install.sh | bash -s dmd
+# you must activate the dlang shell before being able to use it.
+./configure
+make
+```
+
+You'll need to first start the SSO proxy:
+
+```
+python ssoproxy.py
+```
+
+From another terminal, you can use `onedrive` as usual; e.g.: `./onedrive --monitor`.
+
+--------------------------------------------------
+
+
 Introducing a free Microsoft OneDrive Client that seamlessly supports OneDrive Personal, OneDrive for Business, OneDrive for Office365, and SharePoint Libraries.
 
 This robust and highly customisable client is compatible with all major Linux distributions and FreeBSD, and can also be deployed as a container using Docker or Podman. It offers both one-way and two-way synchronisation capabilities while ensuring a secure connection to Microsoft OneDrive services.
